@@ -1,9 +1,7 @@
 {
-	"user_agent": "SubDB/1.0 (download_srt/0.1; https://github.com/ranveer5289)",
+	"user_agent": "SubDB/1.0 (download_srt/0.1; http://github.com/almeidarruben)",
+	
 	"shows_folder": "/Users/rubenalmeida/Desktop/shows",
-	/***
-		Available Languages (need to be separated by canvas)
-    	en,es,fr,it,nl,pl,pt,ro,sv,tr
-    **/
+	
 	"languages": "en"
 }
