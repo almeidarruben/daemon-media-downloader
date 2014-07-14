@@ -28,7 +28,7 @@ class Subtitle(object):
     """
     Downloads the subtitle
 
-    Available Languages (need to be separated by canvas)
+    Available Languages (need to be separated by commas)
     en,es,fr,it,nl,pl,pt,ro,sv,tr
     """
     def download_subtitle(self, file_name):
@@ -48,6 +48,7 @@ class Subtitle(object):
         except urllib.error.URLError as e:
             if e.code == 404:
                 print("Subtitle not found: ", file_name)
+                # TODO: Daily log file for non found subtitles 
 
         # The content_srt need to be decoded with UTF-8 encoding
         content_srt = page_content.read()
@@ -65,5 +66,8 @@ class Subtitle(object):
         f.close()
 
 
+    """
+        Initiates the subtitle download
+    """
     def start_download(self):
         self.download_subtitle(self.file_name)
