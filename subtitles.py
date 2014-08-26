@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import os
 import sys
 import json
@@ -32,9 +33,8 @@ class Subtitle(object):
     en,es,fr,it,nl,pl,pt,ro,sv,tr
     """
     def download_subtitle(self, file_name):
-        file_name = file_name['file_location'] + '/' + file_name['file_name']
         parameters = {'action' : 'download',
-                    'hash' : self.get_hash(file_name),
+                    'hash' : self.get_hash(file_name['file_location'] + '/' + file_name['file_name']),
                     'language' : self.config['languages']}
         
         encoded_url = urllib.parse.urlencode(parameters)
@@ -48,14 +48,16 @@ class Subtitle(object):
             page_content = urllib.request.urlopen(req_object)
 
         except urllib.error.URLError as e:
+            # FIXME: Fix invalid argument exception
             if e.code == 404:
-                print("Subtitle not found: ", file_name['file_name'])
+                print('Subtitle not found: ' + file_name['file_name'])
                 # TODO: Daily log file for non found subtitles 
+        else:
+            # The content_srt need to be decoded with UTF-8 encoding
+            content_srt = page_content.read()
 
-        # The content_srt need to be decoded with UTF-8 encoding
-        content_srt = page_content.read()
-
-        self.create_srt_file(file_name, content_srt.decode(encoding='UTF-8'))
+            self.create_srt_file(file_name['file_location'] + '/' + file_name['file_name'], 
+                content_srt.decode(encoding='UTF-8'))
 
 
     """
