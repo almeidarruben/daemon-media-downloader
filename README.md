@@ -1,4 +1,4 @@
-daemon-media-downloader
-=======================
+daemon-tvsubs-downloader
+========================
 
-Automatically downloads TV Shows and Subtitles based on RSS feeds
+Automatically downloads TV Shows subtitles

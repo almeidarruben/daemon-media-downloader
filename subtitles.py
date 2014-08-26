@@ -32,22 +32,24 @@ class Subtitle(object):
     en,es,fr,it,nl,pl,pt,ro,sv,tr
     """
     def download_subtitle(self, file_name):
+        file_name = file_name['file_location'] + '/' + file_name['file_name']
         parameters = {'action' : 'download',
                     'hash' : self.get_hash(file_name),
                     'language' : self.config['languages']}
-
+        
         encoded_url = urllib.parse.urlencode(parameters)
         final_url = "http://api.thesubdb.com/?" + encoded_url
 
         req_object = urllib.request.Request(final_url)
         req_object.add_header('User-Agent', self.config['user_agent'])
 
+        page_content = None
         try:
             page_content = urllib.request.urlopen(req_object)
 
         except urllib.error.URLError as e:
             if e.code == 404:
-                print("Subtitle not found: ", file_name)
+                print("Subtitle not found: ", file_name['file_name'])
                 # TODO: Daily log file for non found subtitles 
 
         # The content_srt need to be decoded with UTF-8 encoding
