@@ -2,11 +2,6 @@
 	"user_agent": "SubDB/1.0 (download_srt/0.1; http://github.com/almeidarruben)",
 	
 	"shows_folder": "/Users/rubenalmeida/TV Shows",
-
-	"episodes_quality" : "hdtv",
-
-	"shows": ["perception", 
-			"californication"],
 	
 	"languages": "en"
 }
