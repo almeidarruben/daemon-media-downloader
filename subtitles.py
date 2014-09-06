@@ -14,7 +14,7 @@ class Subtitle(object):
 
     
     """
-    Returns the hashcode from the file
+        Returns the hashcode from the file
     """
     def get_hash(self, file_name):
         readsize = 64 * 1024
@@ -27,10 +27,10 @@ class Subtitle(object):
 
 
     """
-    Downloads the subtitle
+        Downloads the subtitle
 
-    Available Languages (need to be separated by commas)
-    en,es,fr,it,nl,pl,pt,ro,sv,tr
+        Available Languages (need to be separated by commas)
+        en,es,fr,it,nl,pl,pt,ro,sv,tr
     """
     def download_subtitle(self, file_name):
         parameters = {'action' : 'download',

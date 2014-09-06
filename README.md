@@ -16,14 +16,14 @@ In `config.json`
 	
         "shows_folder": "/path/to/your/tv_shows/folder",
 
-        "languages": "en"
+        "languages": "use_the_ones_in_available_languages"
     }
 
 
 ### Subtitle Languages
 Subtitles can be downloaded at the same time in all of the available languages below.
 
-Just sepcify them separated by commas in the configuration file.
+Just specify them separated by commas in the configuration file.
 
 ### Available Languages
 * en

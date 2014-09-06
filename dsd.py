@@ -3,10 +3,6 @@ import os
 import json
 from subtitles import Subtitle
 
-#config = {}
-
-#if __name__ == '__main__':
-#    main()
 class DSD(object):
 
     def __init__(self):
@@ -88,9 +84,15 @@ class DSD(object):
         return video_dict
 
 
+    """
+        Loop on the missing subtitles list and start the downloads
+    """
     def download_subtitle_queue(self, missing_subtitles):
         for subtitle in missing_subtitles:
             print ('Downloading ', missing_subtitles[subtitle]['file_name'])
             new_subtitle = Subtitle(missing_subtitles[subtitle], self.config)
             new_subtitle.start_download()
+
+        missing_subtitles.clear()
+        print ('\nDONE!\n')
 
