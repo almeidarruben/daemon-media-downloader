@@ -94,5 +94,5 @@ class DSD(object):
             new_subtitle.start_download()
 
         missing_subtitles.clear()
-        print ('\nDONE!\n')
+        print ('DONE!\n')
 
