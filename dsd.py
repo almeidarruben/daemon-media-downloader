@@ -89,10 +89,10 @@ class DSD(object):
     """
     def download_subtitle_queue(self, missing_subtitles):
         for subtitle in missing_subtitles:
-            print ('Downloading ', missing_subtitles[subtitle]['file_name'])
+            print 'Downloading', missing_subtitles[subtitle]['file_name']
             new_subtitle = Subtitle(missing_subtitles[subtitle], self.config)
             new_subtitle.start_download()
 
         missing_subtitles.clear()
-        print ('DONE!\n')
+        print 'DONE!\n'
 

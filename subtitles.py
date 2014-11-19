@@ -59,7 +59,7 @@ class Subtitle(object):
     def create_srt_file(self, file_name, req_object):
         srt_name = file_name[:-3] + "srt"
         f = open(srt_name, "w")
-        f.write(req_object.text)
+        f.write(req_object.text.encode('utf-8'))
         f.close()
 
 
