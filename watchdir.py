@@ -3,19 +3,27 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from dsd import DSD
-import json
+import json, sys
+
+config = {}
 
 class MyHandler(FileSystemEventHandler):
     
     def on_modified(self, event):
-        start_queue = DSD()
+        start_queue = DSD(config)
         start_queue.run()
 
 
-if __name__ == "__main__":
-    config = {}
+
+def main(argv):
     with open('config.json') as handle:
         config.update(json.load(handle))
+
+
+    if len(sys.argv) > 1:
+        # Set language without changing the configuration file
+        if (sys.argv[1] == '-l'):
+            config['languages'] = sys.argv[2]
 
     event_handler = MyHandler()
     observer = Observer()
@@ -29,3 +37,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         observer.stop()
     observer.join()
+
+
+if __name__ == "__main__":
+	main(sys.argv[1:])

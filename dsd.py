@@ -5,13 +5,10 @@ from subtitles import Subtitle
 
 class DSD(object):
 
-    def __init__(self):
-        self.config = {}
+    def __init__(self, config):
+        self.config = config
 
     def run(self):
-        with open('config.json') as handle:
-            self.config.update(json.load(handle))
-
         self.download_subtitle_queue(self.search_missing_subtitles(self.config["shows_folder"]))
 
 
