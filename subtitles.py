@@ -44,6 +44,7 @@ class Subtitle(object):
 
         subtitle_url = 'http://api.thesubdb.com'
         req_object = requests.get(subtitle_url, headers=headers, params=params, stream=True)
+        req_object.encoding = 'utf-8'
         
         if req_object.status_code  == requests.codes.ok:
             self.create_srt_file(file_name['file_location'] + '/' + file_name['file_name'], 
